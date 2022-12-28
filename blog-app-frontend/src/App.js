@@ -8,8 +8,8 @@ function App() {
   const [ user, setLoginUser] = useState({})
   return (
     <div className="App">
-     {/* <Homepage/> */}
-     {/* <Login setLoginUser={setLoginUser}/> */}
+     <Homepage/>
+     <Login setLoginUser={setLoginUser}/>
      <Register/>
     </div>
   );

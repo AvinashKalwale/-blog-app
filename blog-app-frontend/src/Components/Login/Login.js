@@ -19,8 +19,7 @@ function Login({ setLoginUser}) {
         axios.post("http://localhost:8080/login", user)
         .then(res => {
             alert(res.data.message)
-            setLoginUser(res.data.user)
-            
+            setLoginUser(res.data.user)       
         })
     }
     return (
