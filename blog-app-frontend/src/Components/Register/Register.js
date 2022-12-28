@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './register.css'
+import axios from 'axios'
 const Register =()=> {
     const [user, setUser]=useState({
         email:"",
@@ -16,6 +17,19 @@ const Register =()=> {
         })
     }
     
+    const signup = () => {
+        const { email, password, confirmpassword } = user
+        if( email && password && (password === confirmpassword)){
+            axios.post("http://localhost:8080/signup", user)
+            .then( res => {
+                // alert(res.data.message)
+                console.log(res);
+            })
+        } else {
+            alert("invalid input")
+        }
+        
+    }
     return (
         <div className='register'>
             <div className='container'>
@@ -27,7 +41,7 @@ const Register =()=> {
                 <input className="box" type="password" name='password' value={user.password}  onChange={handleChange}  placeholder='password' required='required'/><br />
                 <p>Confirm Password</p>
                 <input className="box" type="password" name='confirmpassword' value={user.confirmpassword}  onChange={handleChange}  placeholder='confirm password' required='required'/><br />
-                <button type='submit'>SIGN UP</button>
+                <button type='submit' onClick={signup}>SIGN UP</button>
             </div>
         </div>
     )
